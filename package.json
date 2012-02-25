@@ -1,4 +1,4 @@
-{ "name": "absolutely_must_not_fail/"
+{ "name": "absolutely_must_not_fail"
 , "version": "0.0.1"
 , "engines": ["node >= 0.4.0"]
 , "main": "server.js"
