@@ -6,7 +6,7 @@ function ValidAttributes () {
     return {
         title: '',
         content: '',
-        createdAt: ''
+        createdAt: 'aa'
     };
 }
 
