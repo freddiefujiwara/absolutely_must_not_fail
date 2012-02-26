@@ -2,11 +2,9 @@ load 'application'
 
 action 'index', () -> 
     render
-        title: "top#index"
+        title: "絶対に間違えてはいけない"
 
 action 'api', ->
     Result.all (err, results) =>
-        @results = results
-        @title   = "api"
-        render()
+        send results[0]
 

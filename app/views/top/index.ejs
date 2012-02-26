@@ -1,1 +1,42 @@
-<div class="page-header"><h1>top#index</h1></div>
+<div class="page-header"><h1><%= title %></h1></div>
+<div class="player">
+        <div class="youtube-player-video">
+                <div class="youtube-player-object">
+                        テストは成功してるようです
+                </div>  
+        </div>  
+</div> 
+<%- javascript_include_tag('http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js','https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js', 'rails', 'application','jquery.youtube.player.min' ) %>
+<script type="text/javascript">
+var lastCheck = 0;
+$(document).ready(function(){
+        var config =  {
+		title:'test',
+		playlist:{
+			videos: [ { id: 'MrRHR8RoDR8', title: 'Mr. Oizo Flat Beat' } ]
+                },
+		onReady: function(){
+			var video = this;
+			setInterval(function(){
+				$.getJSON("/top/api",function(json){
+					if(json.lastBuild == json.lastUnsuccessfulBuild){
+						video.playVideo();
+					}
+			})},1000);
+		},
+		onYoutubeStateChange:function(status){
+			if(0 == status){
+				var video = this;
+				setInterval(function(){
+					$.getJSON("/top/api",function(json){
+						if(json.lastBuild == json.lastUnsuccessfulBuild){
+							video.playVideo();
+						}
+				})},1000);
+			}
+		}
+        };
+
+        var player = $(".player").player(config);
+});
+</script>
