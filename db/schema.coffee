@@ -6,5 +6,5 @@ Post = describe 'Post', () ->
     property 'content', String
     property 'createdAt', Date
 Result = describe 'Result', () ->
-    property 'lastBuild', Integer
-    property 'lastUnsuccessfulBuild', Integer
+    property 'lastBuild', String
+    property 'lastUnsuccessfulBuild', String
