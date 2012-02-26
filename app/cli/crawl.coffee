@@ -11,8 +11,8 @@ resultCrawl = (dbErr, collection) ->
 	request.get { uri:'http://localhost:8080/job/absolutely_must_not_fail/api/json', json: true }, (err, r, body) -> 
 		collection.save { 
 			_id:"root",
-			lastBuild:body.lastBuild,
-			lastUnsuccessfulBuild:body.lastUnsuccessfulBuild
+			lastBuild:body.lastBuild.number,
+			lastUnsuccessfulBuild:body.lastUnsuccessfulBuild.number
         	 }, (err, docs) ->
 			console.log "Unable to save record: #{err}" if err
 			client.close()
