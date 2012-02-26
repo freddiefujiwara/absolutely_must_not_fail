@@ -19,7 +19,8 @@ $(document).ready(function(){
 			var video = this;
 			setInterval(function(){
 				$.getJSON("/top/api",function(json){
-					if(json.lastBuild == json.lastUnsuccessfulBuild){
+					if(lastCheck != json.lastBuild && json.lastBuild == json.lastUnsuccessfulBuild){
+						lastCheck = json.lastBuild;
 						video.playVideo();
 					}
 			})},1000);
@@ -29,7 +30,8 @@ $(document).ready(function(){
 				var video = this;
 				setInterval(function(){
 					$.getJSON("/top/api",function(json){
-						if(json.lastBuild == json.lastUnsuccessfulBuild){
+						if(lastCheck != json.lastBuild && json.lastBuild == json.lastUnsuccessfulBuild){
+							lastCheck = json.lastBuild;
 							video.playVideo();
 						}
 				})},1000);
