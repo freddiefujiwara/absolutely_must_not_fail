@@ -7,5 +7,6 @@ action 'index', () ->
 action 'api', ->
     Result.all (err, results) =>
         @results = results
+        @title   = api
         render()
 
