@@ -10,13 +10,6 @@
 <script type="text/javascript">
 var lastCheck = 0;
 $(document).ready(function(){
-        var check = function(){
-		$.getJSON("/top/api",function(json){
-			if(lastCheck != json.lastBuild && json.lastBuild == json.lastUnsuccessfulBuild){
-				lastCheck = json.lastBuild;
-				video.playVideo();
-			}
-	}})};
         var config =  {
 		title:'test',
 		playlist:{
@@ -24,12 +17,28 @@ $(document).ready(function(){
                 },
 		onReady: function(){
 			var video = this;
-			setInterval(check,100);
+			setInterval(
+                                var check = function(){
+					$.getJSON("/top/api",function(json){
+						if(lastCheck != json.lastBuild && json.lastBuild == json.lastUnsuccessfulBuild){
+							lastCheck = json.lastBuild;
+							video.playVideo();
+						}
+				})}
+			,100);
 		},
 		onYoutubeStateChange:function(status){
 			if(0 == status){
 				var video = this;
-				setInterval(check,100);
+				setInterval(
+                                        var check = function(){
+						$.getJSON("/top/api",function(json){
+							if(lastCheck != json.lastBuild && json.lastBuild == json.lastUnsuccessfulBuild){
+								lastCheck = json.lastBuild;
+								video.playVideo();
+							}
+					})}
+				,100);
 			}
 		}
         };
