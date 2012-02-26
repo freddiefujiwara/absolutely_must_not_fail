@@ -18,7 +18,7 @@ $(document).ready(function(){
 		onReady: function(){
 			var video = this;
 			setInterval(
-                                var check = function(){
+                                function(){
 					$.getJSON("/top/api",function(json){
 						if(lastCheck != json.lastBuild && json.lastBuild == json.lastUnsuccessfulBuild){
 							lastCheck = json.lastBuild;
@@ -31,7 +31,7 @@ $(document).ready(function(){
 			if(0 == status){
 				var video = this;
 				setInterval(
-                                        var check = function(){
+                                        function(){
 						$.getJSON("/top/api",function(json){
 							if(lastCheck != json.lastBuild && json.lastBuild == json.lastUnsuccessfulBuild){
 								lastCheck = json.lastBuild;
